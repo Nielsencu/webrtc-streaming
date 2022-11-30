@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC Pi Camera</title>
+    <style>
+    button {
+        padding: 8px 16px;
+    }
+    video {
+    }
+    .option {
+        margin-bottom: 8px;
+    }
+
+    #media {
+        max-width: 1280px;
+    }
+    </style>
+</head>
+<body>
+
+<div class="option">
+    <input id="use-stun" type="checkbox"/>
+    <label for="use-stun">Use STUN server</label>
+</div>
+
+<label for="username">Username</label>
+
+<input type="text" title="username" id="username"/>
+
+<label for="room">Room</label>
+
+<input type="text" title="room" id="room"/>
+
+<select name="role" id="role">
+    <option value="offer" selected>Offer</option>
+    <option value="answer">Answer</option>
+</select>
+<button id="start" onclick="start()">Start</button>
+<button id="stop" style="display: none" onclick="stop()">Stop</button>
+
+<div id="media">
+    <h2>Local stream</h2>
+    <video controls id="localvideo" autoplay="true" playsinline="true"></video>
+</div>
+<div id="media">
+    <h2>Remote stream</h2>
+    <video controls id="remotevideo" autoplay="true" playsinline="true"></video>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="client.js"></script>
+</body>
+</html>
