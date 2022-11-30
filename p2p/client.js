@@ -1,4 +1,4 @@
-const socket = io("http://localhost:9000", {
+const socket = io("http://54.151.209.153:9000", {
     autoConnect: false,
 });
 
@@ -27,10 +27,10 @@ const sendData = (data) => {
 const startConnection = () => {
     navigator.mediaDevices
         .getUserMedia({
-        audio: false,
+        audio: true,
         video: {
-            height: 350,
-            width: 350,
+            width: 640,
+            height: 480, 
         },
         })
         .then((stream) => {
