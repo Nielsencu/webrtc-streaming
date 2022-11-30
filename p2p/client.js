@@ -61,7 +61,22 @@ const onTrack = (event) => {
 
 const createPeerConnection = () => {
 try {
-    pc = new RTCPeerConnection({});
+    var config = {
+        sdpSemantics: 'unified-plan'
+    };
+
+    if (document.getElementById('use-stun').checked) {
+        config.iceServers = [{urls: [
+        'stun:stun.l.google.com:19302', 
+        'stun:stun1.l.google.com:19302', 
+        'stun:stun2.l.google.com:19302',
+        'stun:stun3.l.google.com:19302',
+        'stun:stun4.l.google.com:19302',
+        'stun:stun01.sipphone.com',
+        'stun:stun.ekiga.net',
+    ]}];
+    }
+    pc = new RTCPeerConnection(config);
     pc.onicecandidate = onIceCandidate;
     pc.ontrack = onTrack;
     const localStream = document.getElementById('localvideo').srcObject;
